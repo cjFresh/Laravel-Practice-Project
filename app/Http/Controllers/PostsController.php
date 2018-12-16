@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post; //app folder, post.php file
+use App\Exports\PostsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use DB; //import to use SQL instead of ELOQUENT
 
 class PostsController extends Controller
@@ -55,6 +57,13 @@ class PostsController extends Controller
         //$posts = DB::select('SELECT * FROM posts');
 
         return view('posts.index')->with('posts', $posts);
+    }
+
+    public function download() 
+    {
+        //return Excel::download(new PostExport, 'posts.xlsx');
+        //$posts = Post::all();
+        return Excel::download(new PostsExport, 'posts.xlsx');
     }
 
     /**

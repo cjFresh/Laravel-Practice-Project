@@ -36,6 +36,7 @@ Route::get('/', 'PagesController@index');
 //PagesController class
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
+Route::get('/download_posts', 'PostsController@download'); // for db to excel exportation
 //shortcut
 Route::resource('posts', 'PostsController');
 Auth::routes();
